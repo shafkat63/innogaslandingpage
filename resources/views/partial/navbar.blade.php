@@ -8,7 +8,7 @@
             </a>
             <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
                 <span class="sr-only">Open main menu</span>
-                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="" fill="none" viewBox="0 0 17 14">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
                 </svg>
             </button>
@@ -29,24 +29,28 @@
     </nav>
 
 <!-- JavaScript for handling active link -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const links = document.querySelectorAll('[data-link]');
-        links.forEach(link => {
-            link.addEventListener('click', function() {
-                links.forEach(l => l.classList.remove('text-blue-700', 'dark:text-blue-500'));
-                this.classList.add('text-blue-700', 'dark:text-blue-500');
-            });
+    $(document).ready(function() {
+        // Click event handler for navigation links
+        $('[data-link]').click(function() {
+            $('[data-link]').removeClass('text-blue-700 dark:text-blue-500');
+            $(this).addClass('text-blue-700 dark:text-blue-500');
         });
 
-        // Optionally, add logic to highlight the current section based on the URL hash
+        // Optionally, highlight the current section based on the URL hash
         const currentHash = window.location.hash;
         if (currentHash) {
-            const activeLink = document.querySelector(`[data-link="${currentHash.substring(1)}"]`);
-            if (activeLink) {
-                activeLink.classList.add('text-blue-700', 'dark:text-blue-500');
+            const activeLink = $(`[data-link="${currentHash.substring(1)}"]`);
+            if (activeLink.length) {
+                activeLink.addClass('text-blue-700 dark:text-blue-500');
             }
         }
+    
+        // Click event handler for toggle button
+        $('[data-collapse-toggle]').click(function() {
+            $('#navbar-default').toggleClass('hidden');
+        });
     });
 </script>
 
