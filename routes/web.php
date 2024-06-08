@@ -11,6 +11,12 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('authentication.login');
 });
+Route::get('/login2', function () {
+    return view('authentication.login2');
+});
+Route::get('/cdn', function () {
+    return view('authentication.cdn');
+});
 
 Route::get('/register', function () {
     return view('authentication.register');
