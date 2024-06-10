@@ -1,11 +1,11 @@
 # make an APP KEy 
 
-#composer install
+`composer install`
 
-#npm install
+`npm install`
 
-#npm run dev
+`npm run dev`
 
-#php artisan serve
+`php artisan serve`
 
 make sure to run database server and change the database name
